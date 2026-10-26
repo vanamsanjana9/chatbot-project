@@ -46,7 +46,7 @@ pipeline {
                     bat 'echo %DOCKERHUB_TOKEN%| docker login -u %DOCKERHUB_USER% --password-stdin'
                     bat 'docker push %FRONTEND_IMAGE%:%BUILD_NUMBER%'
                     bat 'docker push %BACKEND_IMAGE%:%BUILD_NUMBER%'
-                    bat 'docker logout'
+                    
                 }
             }
         }
