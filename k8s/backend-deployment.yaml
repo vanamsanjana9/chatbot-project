@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatbot-backend
+  template:
+    metadata:
+      labels:
+        app: chatbot-backend
+    spec:
+      containers:
+      - name: backend
+        image: vanamsanjana9/chatbot-backend
+        ports:
+        - containerPort: 5000  # Change this to match your backend port if different (e.g., 3000, 5000)
+        envFrom:
+        - configMapRef:
+            name: chatbot-config
