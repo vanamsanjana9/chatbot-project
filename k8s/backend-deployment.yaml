@@ -16,7 +16,7 @@ spec:
       - name: backend
         image: vanamsanjana9/chatbot-backend
         ports:
-        - containerPort: 5000  # Change this to match your backend port if different (e.g., 3000, 5000)
+        - containerPort: 5000
         envFrom:
         - configMapRef:
-            name: chatbot-config
+            name: chatbot-config  # <-- This injects DB_HOST="mysql-service"
