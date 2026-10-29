@@ -6,12 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MySQL connection
+// MySQL connection (uses environment variables from Kubernetes ConfigMap/Secret with local fallbacks)
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",     // ✅ your MySQL password
-  database: "chatbot_db"
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.MYSQL_PASSWORD || "root",
+  database: process.env.DB_NAME || "chatbot_db"
 });
 
 db.connect(err => {
