@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: chatbot-config
 data:
-  DB_HOST: "mysql-service"
+  DB_HOST: "mysql-service"   # Must be "mysql-service" so it talks to the cluster's mysql pod
   DB_PORT: "3306"
   DB_NAME: "chatbotdb"
-  DB_USER: "root"  # <-- Change from chatbot_user to root
+  DB_USER: "root"
