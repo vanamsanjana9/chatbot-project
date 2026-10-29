@@ -11,7 +11,7 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST || "localhost",
   user: process.env.DB_USER || "root",
   password: process.env.MYSQL_PASSWORD || "root",
-  database: process.env.DB_NAME || "chatbot_db"
+  database: process.env.DB_NAME || "chatbotdb" // Updated to match your Kubernetes ConfigMap DB_NAME
 });
 
 db.connect(err => {
@@ -20,6 +20,11 @@ db.connect(err => {
   } else {
     console.log("✅ MySQL Connected");
   }
+});
+
+// Root route so browser shows a friendly status instead of "Cannot GET /"
+app.get("/", (req, res) => {
+  res.send("🤖 Chatbot Backend is running successfully!");
 });
 
 // Chat API
